@@ -30,12 +30,11 @@ A list object containing the following information.
 
 ### Authors
 
-Francisco Rosales
+- Francisco Rosales
+- John Barrera
 
-John Barrera
 
-
-## Intallation
+### Installation
 
 As described in the manual, to [install unregistered packages][unregistered], use `Pkg.clone()` with the repository url:
 
@@ -46,8 +45,8 @@ Pkg.clone("https://github.com/johnkevinbarrera/drbasisj.jl")
 
 Julia version 0.4 or higher is required (install instructions [here][version]).
 
-```
 
+```
 ## Trabajando con el pkg drbasisprueba
 
 for use this package, yo should do:
@@ -58,4 +57,44 @@ using drbasisprueba
 
 
 drbasisprueba.drbasis(500,6)
+
+### Usage
+
+As `SearchMatch` supports a number of model variants, there are specific constructors for the two main types:
+
+* `SearchClosed`: closed-system where agents cycle between singlehood and marriage
+* `SearchInflow`: steady-state population is determined by exogenous inflows and type-specific death rates
+
+## Example
+
+RELLENAR
+
+```julia
+using drbasisj
+using Gadfly      #for the grafics
+
+n = 100
+v = 1:n
+Basis=[drbasisj.drbasis(n,1),
+       drbasisj.drbasis(n,2),
+       drbasisj.drbasis(n,3),
+       drbasisj.drbasis(n,4),
+       drbasisj.drbasis(n,5),
+       drbasisj.drbasis(n,6)]
+       
+#Eigenvalues
+
+
+
+
 ```
+
+
+
+
+
+
+
+[unregistered]:http://docs.julialang.org/en/release-0.5/manual/packages/#installing-unregistered-packages
+[version]:http://julialang.org/downloads/platform.html
+
