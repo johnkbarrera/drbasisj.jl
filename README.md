@@ -29,10 +29,8 @@ A list object containing the following information.
 `Serra, P. and Krivobokova, T. (2015)` Adaptive Empirical Bayesian Smoothing Splines
 
 ### Authors
-
-- Francisco Rosales
-- John Barrera
-
+       Francisco Rosales
+       John Barrera
 
 ### Installation
 
@@ -51,12 +49,16 @@ Julia version 0.4 or higher is required (install instructions [here][version]).
 
 for use this package, yo should do:
 
+```
+
 ```julia
 
 using drbasisprueba
 
 
 drbasisprueba.drbasis(500,6)
+
+```
 
 ### Usage
 
@@ -71,22 +73,26 @@ RELLENAR
 
 ```julia
 using drbasisj
-using Gadfly      #for the grafics
+using Gadfly
 
 n = 100
-v = 1:n
 Basis=[drbasisj.drbasis(n,1),
-       drbasisj.drbasis(n,2),
-       drbasisj.drbasis(n,3),
-       drbasisj.drbasis(n,4),
-       drbasisj.drbasis(n,5),
-       drbasisj.drbasis(n,6)]
-       
-#Eigenvalues
+	drbasisj.drbasis(n,2),
+	drbasisj.drbasis(n,3),
+	drbasisj.drbasis(n,4),
+	drbasisj.drbasis(n,5),
+	drbasisj.drbasis(n,6)]
 
+set_default_plot_size(12cm, 8cm)
+p1 = plot(x=1:n, y=Basis[1][3], Geom.line, Guide.Title("Eigenvalues (q=1)")) 
+p2 = plot(x=1:n, y=Basis[2][3], Geom.line, Guide.Title("Eigenvalues (q=2)"))
+p3 = plot(x=1:n, y=Basis[3][3], Geom.line, Guide.Title("Eigenvalues (q=3)")) 
+p4 = plot(x=1:n, y=Basis[4][3], Geom.line, Guide.Title("Eigenvalues (q=4)"))
+p5 = plot(x=1:n, y=Basis[5][3], Geom.line, Guide.Title("Eigenvalues (q=5)")) 
+p6 = plot(x=1:n, y=Basis[6][3], Geom.line, Guide.Title("Eigenvalues (q=6)"))
 
-
-
+set_default_plot_size(24cm, 24cm)
+gridstack([p1 p2 ; p3 p4; p5 p6])
 ```
 
 
