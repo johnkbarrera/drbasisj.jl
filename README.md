@@ -29,16 +29,23 @@ A list object containing the following information.
 `Serra, P. and Krivobokova, T. (2015)` Adaptive Empirical Bayesian Smoothing Splines
 
 ### Authors
+
 Francisco Rosales
+
 John Barrera
 
 
 ## Intallation
 
-Since this package is not registered, you must install it by cloning. To add this package, use:
+As described in the manual, to [install unregistered packages][unregistered], use `Pkg.clone()` with the repository url:
 
 ```julia
-Pkg.clone("https://github.com/johnkevinbarrera/drbasisprueba.jl")
+Pkg.clone("https://github.com/johnkevinbarrera/drbasisj.jl")
+Pkg.clone("https://github.com/johnkevinbarrera/drbasisj.jl")
+```
+
+Julia version 0.4 or higher is required (install instructions [here][version]).
+
 ```
 
 ## Trabajando con el pkg drbasisprueba
