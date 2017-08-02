@@ -46,7 +46,7 @@ Julia version 0.4 or higher is required (install instructions [here][version]).
 
 ### Usage
 
-To use the function `drbasis` has to invoke the package with ```using drbasisj ```, now you can use the function as follows ```drbasisj.drbasis(nn,qq) ```
+To use the function `drbasis` has to invoke the package with `using drbasisj `, now you can use the function as follows `drbasisj.drbasis(nn,qq) `
 
 ### Example
 
@@ -118,12 +118,23 @@ plot(x=1:n, y = mu, Geom.line, Guide.ylabel("mu"))
 ![Match function](https://user-images.githubusercontent.com/7105645/28853960-bba7a066-76f9-11e7-9ba0-30d4e79aa304.png)
 
 ### Note
+Remember Julia not uses lists, so I will use matrices and vectors.
+Now, if you have an `a = drbasis(nn,qq)` object, you can access the elements as follows:
 
-In a Julia session, run `Pkg.test("drbasisj")`.
+- eigenvectors : a[1]
+- eigenvectorsQR : a[2]
+- eigenvalues : a[3]
+- x : a[4]
+
+However, in the R language it is different.
 
 ### Testing
 
 In a Julia session, run `Pkg.test("drbasisj")`.
+
+### keyword
+	Demmler-Reinsch basis
+	non-parametric
 
 [unregistered]:http://docs.julialang.org/en/release-0.5/manual/packages/#installing-unregistered-packages
 [version]:http://julialang.org/downloads/platform.html
