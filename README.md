@@ -78,7 +78,7 @@ p6 = plot(x=1:n, y=Basis[6][3], Geom.line, Guide.Title("Eigenvalues (q=6)"))
 set_default_plot_size(24cm, 24cm)
 gridstack([p1 p2 ; p3 p4; p5 p6])
 ```
-![Match function](https://user-images.githubusercontent.com/7105645/28856524-38521768-7709-11e7-9cd9-204097fa09a2.png)
+![Match function](https://user-images.githubusercontent.com/7105645/28857296-fbb25f34-770d-11e7-9d40-124c42dc24c1.png)
 
 ```julia
 #Eigenvector for q=3
@@ -94,7 +94,7 @@ r6 = plot(x=1:n, y=Basis[6][2][:,6+3], Geom.line, Guide.Title("Eigenvector n.9")
 set_default_plot_size(24cm, 24cm)
 gridstack([r1 r2 ; r3 r4; r5 r6])
 ```
-![Match function](https://user-images.githubusercontent.com/7105645/28857079-5a76c228-770c-11e7-86d0-653543d18bb5.png)
+![Match function](https://user-images.githubusercontent.com/7105645/28857313-2b1f7748-770e-11e7-86a3-4bc7fd48453f.png)
 
 ```julia
 
@@ -115,7 +115,7 @@ mu = -A3*coef3
 set_default_plot_size(16cm, 16cm)
 plot(x=1:n, y = mu, Geom.line, Guide.ylabel("mu"))
 ```
-![Match function](https://user-images.githubusercontent.com/7105645/28857138-ba8d65ae-770c-11e7-91e4-892159f0a3d8.png)
+![Match function](https://user-images.githubusercontent.com/7105645/28857316-2bd8c9d2-770e-11e7-8272-6ea0546a8161.png)
 
 ## Note
 Remember Julia not uses lists, so I will use matrices and vectors.
