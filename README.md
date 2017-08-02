@@ -127,6 +127,7 @@ Now, if you have an `a = drbasis(nn,qq)` object, you can access the elements as 
 - x : a[4]
 
 However, in the R language it is different.
+For more details see help.txt
 
 ## Testing
 
