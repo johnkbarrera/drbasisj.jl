@@ -1,0 +1,123 @@
+ _______________________________________________________
+|							|
+|	Computation of the Demmler-Reinsch basis.	|
+|_______________________________________________________|
+
+	The Demmler-Reinsch basis is provided for a given smoothness degree in a uniform grid.
+	- drbasis(nn,qq)
+	- nn: Number of design points in the uniform grid.
+	- qq: Smoothness degree of the basis.
+
+   Details
+	The use of large numbers required by the basis is handled by the package Brobdingnag. The method assumes the grid is equidistant. Missing values are not supported.
+
+   Value
+	A list object containing the following information.
+	- eigenvectors: estimated eigenvectors.
+	- eigenvectorsQR: orthonormal eigenvectors.
+	- eigenvalues: estimadted eigenvalues.
+	- x: equidistant grid used to build the basis.
+
+   References
+	- Rosales F. (2016). Empirical Bayesian Smoothing Splines for Signals with Correlated Errors: Methods and Applications 
+	- Serra, P. and Krivobokova, T. (2015) Adaptive Empirical Bayesian Smoothing Splines
+
+   Authors
+   	Francisco Rosales
+   	John Barrera
+
+   Installation
+	As described in the manual, to install unregistered packages, use Pkg.clone() with the repository url:
+
+	* * * Julia * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	*   Pkg.clone("https://github.com/johnkevinbarrera/drbasisj.jl")    			*
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+	Julia version 0.4 or higher is required (install instructions here).
+
+   Usage
+	To use the function drbasis has to invoke the package with using drbasisj, now you can use the function as follows drbasisj.drbasis(nn,qq)
+	if you dont have Gadfly library, you can install writing in the Julia's console: Pkg.add("Gadfly"), sometimes before you require install another librarys, so know this see ypur console.
+
+   Example
+	Plot elements of the basis, I use Gadfly
+	* * * Julia * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	*   using drbasisj									*
+	*   using Gadfly									*
+	*											*							
+	*   n = 100										*
+	*   Basis=[drbasisj.drbasis(n,1),							*
+	*	   drbasisj.drbasis(n,2),							*															*
+	*	   drbasisj.drbasis(n,3),							*
+	*	   drbasisj.drbasis(n,4),							*
+	*	   drbasisj.drbasis(n,5),							*
+	*	   drbasisj.drbasis(n,6)]							*
+	*											*
+	*											*
+	*   #Eigenvalues									*
+	*											*
+	*   set_default_plot_size(12cm, 8cm)							*
+	*   p1 = plot(x=1:n, y=Basis[1][3], Geom.line, Guide.Title("Eigenvalues (q=1)")) 	*
+	*   p2 = plot(x=1:n, y=Basis[2][3], Geom.line, Guide.Title("Eigenvalues (q=2)"))	*
+	*   p3 = plot(x=1:n, y=Basis[3][3], Geom.line, Guide.Title("Eigenvalues (q=3)")) 	*
+	*   p4 = plot(x=1:n, y=Basis[4][3], Geom.line, Guide.Title("Eigenvalues (q=4)"))	*
+	*   p5 = plot(x=1:n, y=Basis[5][3], Geom.line, Guide.Title("Eigenvalues (q=5)")) 	*
+	*   p6 = plot(x=1:n, y=Basis[6][3], Geom.line, Guide.Title("Eigenvalues (q=6)"))	*
+	*   											*
+	*   set_default_plot_size(24cm, 24cm)							*
+	*   gridstack([p1 p2 ; p3 p4; p5 p6])							*
+	*   											*
+	*   FIGURA 1										*
+	*   											*
+	*   #Eigenvector for q=3								*
+	*   											*
+	*   set_default_plot_size(12cm, 8cm)							*
+	*   r1 = plot(x=1:n, y=Basis[1][2][:,1+3], Geom.line, Guide.Title("Eigenvector n.4")) 	*
+	*   r2 = plot(x=1:n, y=Basis[2][2][:,2+3], Geom.line, Guide.Title("Eigenvector n.5"))	* 
+	*   r3 = plot(x=1:n, y=Basis[3][2][:,3+3], Geom.line, Guide.Title("Eigenvector n.6")) 	*
+	*   r4 = plot(x=1:n, y=Basis[4][2][:,4+3], Geom.line, Guide.Title("Eigenvector n.7")) 	*
+	*   r5 = plot(x=1:n, y=Basis[5][2][:,5+3], Geom.line, Guide.Title("Eigenvector n.8")) 	*
+	*   r6 = plot(x=1:n, y=Basis[6][2][:,6+3], Geom.line, Guide.Title("Eigenvector n.9")) 	*
+	*   											*
+	*   set_default_plot_size(24cm, 24cm)							*
+	*   gridstack([r1 r2 ; r3 r4; r5 r6])							*
+	*   											*
+	*   FIGURA 2										*
+	*   											*
+	*   #example of a smooth function in the Demmler-Reinsch basis				*
+	*   											*
+	*   n = 500										*
+	*   Basis=[drbasisj.drbasis(n,1),							*
+	*   	   drbasisj.drbasis(n,2),							*
+	*   	   drbasisj.drbasis(n,3),							*
+	*   	   drbasisj.drbasis(n,4),							*
+	*   	   drbasisj.drbasis(n,5),							*
+	*   	   drbasisj.drbasis(n,6)]							*
+	*   											*
+	*   coef3 = vcat(zeros(3),(pi*(2:(n-2))).^(-3.1)).*(cos(2*(1:n)))			*
+	*   A3 = Basis[3][1]									*
+	*   mu = -A3*coef3									*
+	*   											*
+	*   set_default_plot_size(16cm, 16cm)							*
+	*   plot(x=1:n, y = mu, Geom.line, Guide.ylabel("mu"))					*
+	*   											*
+	*   FIGURA 3										*	
+	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
+ 
+   Note
+	Remember Julia not uses lists, so I will use matrices and vectors. Now, if you have an a = drbasis(nn,qq) object, you can access the elements as follows:
+	- eigenvectors : a[1]
+	- eigenvectorsQR : a[2]
+	- eigenvalues : a[3]
+	- x : a[4]
+	However, in the R language it is different.
+	all in * is code for Julia
+	This code is in their first version, yet, you can use whitout problems.
+	for update your package you will write Pkg.update() in the julia's console.
+
+   Testing
+	- In a Julia session, run Pkg.test("drbasisj").
+
+   keyword
+	Demmler-Reinsch basis
+	non-parametric
