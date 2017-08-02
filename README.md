@@ -67,7 +67,7 @@ As `SearchMatch` supports a number of model variants, there are specific constru
 * `SearchClosed`: closed-system where agents cycle between singlehood and marriage
 * `SearchInflow`: steady-state population is determined by exogenous inflows and type-specific death rates
 
-## Example
+### Example
 
 RELLENAR
 
@@ -83,6 +83,9 @@ Basis=[drbasisj.drbasis(n,1),
 	drbasisj.drbasis(n,5),
 	drbasisj.drbasis(n,6)]
 
+
+#Eigenvalues
+
 set_default_plot_size(12cm, 8cm)
 p1 = plot(x=1:n, y=Basis[1][3], Geom.line, Guide.Title("Eigenvalues (q=1)")) 
 p2 = plot(x=1:n, y=Basis[2][3], Geom.line, Guide.Title("Eigenvalues (q=2)"))
@@ -94,12 +97,44 @@ p6 = plot(x=1:n, y=Basis[6][3], Geom.line, Guide.Title("Eigenvalues (q=6)"))
 set_default_plot_size(24cm, 24cm)
 gridstack([p1 p2 ; p3 p4; p5 p6])
 ```
+![Match function](https://user-images.githubusercontent.com/7105645/28851921-44d9e1aa-76eb-11e7-8c40-998234ee0185.png)
+
+```julia
+#Eigenvector for q=3
+
+set_default_plot_size(12cm, 8cm)
+r1 = plot(x=1:n, y=Basis[1][2][:,1+3], Geom.line, Guide.Title("Eigenvector n.4")) 
+r2 = plot(x=1:n, y=Basis[2][2][:,2+3], Geom.line, Guide.Title("Eigenvector n.5")) 
+r3 = plot(x=1:n, y=Basis[3][2][:,3+3], Geom.line, Guide.Title("Eigenvector n.6")) 
+r4 = plot(x=1:n, y=Basis[4][2][:,4+3], Geom.line, Guide.Title("Eigenvector n.7")) 
+r5 = plot(x=1:n, y=Basis[5][2][:,5+3], Geom.line, Guide.Title("Eigenvector n.8")) 
+r6 = plot(x=1:n, y=Basis[6][2][:,6+3], Geom.line, Guide.Title("Eigenvector n.9")) 
+
+set_default_plot_size(24cm, 24cm)
+gridstack([r1 r2 ; r3 r4; r5 r6])
+```
+![Match function](https://user-images.githubusercontent.com/7105645/28852800-96e646e0-76f1-11e7-9538-1df1b4df29ff.png)
+
+```julia
+
+#example of a smooth function in the Demmler-Reinsch basis
+
+n = 500
+Basis=[drbasisj.drbasis(n,1),
+	drbasisj.drbasis(n,2),
+	drbasisj.drbasis(n,3),
+	drbasisj.drbasis(n,4),
+	drbasisj.drbasis(n,5),
+	drbasisj.drbasis(n,6)]
+	
+coef3 = 
 
 
+```
 
+### Testing
 
-
-
+In a Julia session, run `Pkg.test("drbasisj")`.
 
 [unregistered]:http://docs.julialang.org/en/release-0.5/manual/packages/#installing-unregistered-packages
 [version]:http://julialang.org/downloads/platform.html
