@@ -50,7 +50,7 @@ To use the function `drbasis` has to invoke the package with ```using drbasisj `
 
 ### Example
 
-RELLENAR
+plot elements of the basis, I use [Gadfly][gadfly]
 
 ```julia
 using drbasisj
@@ -110,10 +110,16 @@ Basis=[drbasisj.drbasis(n,1),
 	
 coef3 = vcat(zeros(3),(pi*(2:(n-2))).^(-3.1)).*(cos(2*(1:n)))
 A3 = Basis[3][1]
-mu = A3*coef3
+mu = -A3*coef3
 
-
+set_default_plot_size(16cm, 16cm)
+plot(x=1:n, y = mu, Geom.line, Guide.ylabel("mu"))
 ```
+![Match function](https://user-images.githubusercontent.com/7105645/28853960-bba7a066-76f9-11e7-9ba0-30d4e79aa304.png)
+
+### Note
+
+In a Julia session, run `Pkg.test("drbasisj")`.
 
 ### Testing
 
@@ -121,4 +127,4 @@ In a Julia session, run `Pkg.test("drbasisj")`.
 
 [unregistered]:http://docs.julialang.org/en/release-0.5/manual/packages/#installing-unregistered-packages
 [version]:http://julialang.org/downloads/platform.html
-
+[gadfly]:http://gadflyjl.org/stable/
