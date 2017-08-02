@@ -1,7 +1,7 @@
- _______________________________________________________
-|							|
-|	Computation of the Demmler-Reinsch basis.	|
-|_______________________________________________________|
+   _______________________________________________________
+  |			       				  |
+  |	Computation of the Demmler-Reinsch basis.	  |
+  |_______________________________________________________|
 
 	The Demmler-Reinsch basis is provided for a given smoothness degree in a uniform grid.
 	- drbasis(nn,qq)
@@ -9,7 +9,8 @@
 	- qq: Smoothness degree of the basis.
 
    Details
-	The use of large numbers required by the basis is handled by the package Brobdingnag. The method assumes the grid is equidistant. Missing values are not supported.
+	The use of large numbers required by the basis is handled by the package Brobdingnag. The method assumes the grid is equidistant. 
+	Missing values are not supported.
 
    Value
 	A list object containing the following information.
@@ -36,8 +37,10 @@
 	Julia version 0.4 or higher is required (install instructions here).
 
    Usage
-	To use the function drbasis has to invoke the package with using drbasisj, now you can use the function as follows drbasisj.drbasis(nn,qq)
-	if you dont have Gadfly library, you can install writing in the Julia's console: Pkg.add("Gadfly"), sometimes before you require install another librarys, so know this see ypur console.
+	To use the function drbasis has to invoke the package with using drbasisj, now you can use the function as follows 
+	drbasisj.drbasis(nn,qq).
+	If you dont have Gadfly library, you can install writing in the Julia's console: Pkg.add("Gadfly"), sometimes before you 
+	require install another librarys, so know this see ypur console.
 
    Example
 	Plot elements of the basis, I use Gadfly
@@ -105,7 +108,8 @@
 	* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
  
    Note
-	Remember Julia not uses lists, so I will use matrices and vectors. Now, if you have an a = drbasis(nn,qq) object, you can access the elements as follows:
+	Remember Julia not uses lists, so I will use matrices and vectors. Now, if you have an a = drbasis(nn,qq) object, 
+	you can access the elements as follows:
 	- eigenvectors : a[1]
 	- eigenvectorsQR : a[2]
 	- eigenvalues : a[3]
@@ -116,8 +120,10 @@
 	for update your package you will write Pkg.update() in the julia's console.
 
    Testing
-	- In a Julia session, run Pkg.test("drbasisj").
+	In a Julia session, run Pkg.test("drbasisj").
 
    keyword
 	Demmler-Reinsch basis
 	non-parametric
+
+
