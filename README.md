@@ -44,28 +44,9 @@ Pkg.clone("https://github.com/johnkevinbarrera/drbasisj.jl")
 Julia version 0.4 or higher is required (install instructions [here][version]).
 
 
-```
-## Trabajando con el pkg drbasisprueba
-
-for use this package, yo should do:
-
-```
-
-```julia
-
-using drbasisprueba
-
-
-drbasisprueba.drbasis(500,6)
-
-```
-
 ### Usage
 
-As `SearchMatch` supports a number of model variants, there are specific constructors for the two main types:
-
-* `SearchClosed`: closed-system where agents cycle between singlehood and marriage
-* `SearchInflow`: steady-state population is determined by exogenous inflows and type-specific death rates
+To use the function `drbasis` has to invoke the package with ```using drbasisj ```, now you can use the function as follows ```drbasisj.drbasis(nn,qq) ```
 
 ### Example
 
@@ -127,7 +108,9 @@ Basis=[drbasisj.drbasis(n,1),
 	drbasisj.drbasis(n,5),
 	drbasisj.drbasis(n,6)]
 	
-coef3 = 
+coef3 = vcat(zeros(3),(pi*(2:(n-2))).^(-3.1)).*(cos(2*(1:n)))
+A3 = Basis[3][1]
+mu = A3*coef3
 
 
 ```
