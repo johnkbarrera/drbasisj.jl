@@ -1,9 +1,5 @@
 # Computation of the Demmler-Reinsch basis.
 
-[![Build Status](https://travis-ci.org/ChrisRackauckas/ExamplePackage.jl.svg?branch=master)](https://travis-ci.org/ChrisRackauckas/ExamplePackage.jl)
-[![Build status](https://ci.appveyor.com/api/projects/status/9iuvdt0j0mw6au0k?svg=true)](https://ci.appveyor.com/project/ChrisRackauckas/examplepackage-jl)
-
-
 
 The `Demmler-Reinsch basis` is provided for a given smoothness degree in a uniform grid. 
 - `drbasis(nn,qq)`
